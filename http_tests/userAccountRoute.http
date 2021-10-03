@@ -1,0 +1,37 @@
+POST http://localhost:5000/useAccount/signup
+Content-Type: application/json
+
+{
+    "username":"souvik",
+    "email": "sensouvik51@gmail.com",
+    "password": "souvik11sen"
+}
+###
+
+POST http://localhost:5000/useAccount/login
+Content-Type: application/json
+
+{
+    "email":"sensouvik51@gmail.com",
+    "password":"souvik11sen"
+}
+
+###
+
+GET http://localhost:5000/useAccount
+Content-Type: application/json
+
+
+
+###
+
+DELETE http://localhost:5000/useAccount/6155c0aa8fbc390ba9b75a19
+Content-Type: application/json
+
+###
+
+PUT http://localhost:5000/useAccount/accountActivation/6155c1f68fbc390ba9b75a25
+Content-Type: application/json
+
+
+

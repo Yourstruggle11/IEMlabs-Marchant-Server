@@ -1,0 +1,18 @@
+POST http://localhost:5000/payment/paymentgetway
+Content-Type: application/json
+
+{
+    "product": {
+        "price":"45",
+        "name":"react"
+
+    },
+    "token": {
+        "id":"tok_1JfiODSAtg7kF07uNYCFIbtq",
+        "email":"souviksen093@gmail.com",
+        "card":{
+            "name":"souvik sen",
+            "address_country":"INIDA"
+        }
+    }
+}
