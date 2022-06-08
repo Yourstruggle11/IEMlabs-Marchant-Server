@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import nodemailer from "nodemailer"
 import {google} from "googleapis"
 import env from "dotenv";
+import {generateToken} from "../utils/generateToken.js"
 
 env.config();
 
@@ -121,7 +122,8 @@ export const loginUser = async (req, res, next) => {
                 res.json({
                     _id: checkEmail._id,
                     name: checkEmail.username,
-                    email: checkEmail.email
+                    email: checkEmail.email,
+                    token: generateToken(checkEmail._id)
                 })
             }
             else {

@@ -1,4 +1,4 @@
-POST http://localhost:5000/useAccount/signup
+POST https://iemlabs-merchant-server.herokuapp.com/useAccount/signup
 Content-Type: application/json
 
 {
