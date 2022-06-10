@@ -32,8 +32,8 @@ const authMiddleware = async (req, res, next) => {
         } catch (error) {
             if (error.name === 'JsonWebTokenError') {
                 res.status(404).json({
-                        status: false,
-                        message: 'Unauthorised'
+                    status: false,
+                    message: 'Unauthorised'
                 })
             } else {
                 // token expired

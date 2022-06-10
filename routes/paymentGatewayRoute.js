@@ -1,14 +1,9 @@
-import express from "express";
-import {payment} from "../controller/paymentGatwayController.js"
-    import  authMiddleware from "../middleware/authMiddleware.js"
+import express from 'express'
+import { payment } from '../controller/paymentGatwayController.js'
+import authMiddleware from '../middleware/authMiddleware.js'
 
-const route = express.Router();
+const route = express.Router()
 
-route.post("/paymentgateway", authMiddleware, payment);
+route.post('/paymentgateway', authMiddleware, payment)
 
-
-
-
-export default route;
-
-
+export default route
