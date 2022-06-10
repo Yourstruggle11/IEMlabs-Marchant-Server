@@ -14,7 +14,7 @@ env.config()
  * @access Public
  *
  */
-export const sendRecoveryMail = async (req, res, next) => {
+export const sendRecoveryMail = async (req, res) => {
     const { email } = req.body
 
     const checkEmail = await userAccount.findOne({ email: email })
@@ -38,9 +38,10 @@ export const sendRecoveryMail = async (req, res, next) => {
             .then((result) => console.log('email sent..', result))
             .catch((error) => console.log(error.message))
     } else {
-        res.status(404)
-        const err = new Error('No user account found with this email address!')
-        next(err)
+        res.status(404).json({
+            status: false,
+            message: 'No user account found with this email address!'
+        })
     }
 }
 

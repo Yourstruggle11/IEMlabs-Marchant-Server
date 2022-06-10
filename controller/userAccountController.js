@@ -15,14 +15,15 @@ env.config()
  * @access Public
  *
  */
-export const registerUser = async (req, res, next) => {
+export const registerUser = async (req, res) => {
     const { username, email, password } = req.body
 
     const userExist = await userAccount.findOne({ email: email })
     if (userExist) {
-        res.status(404)
-        const err = new Error('User with this same email already exist!')
-        next(err)
+        res.status(404).json({
+            status: false,
+            message: 'User with this same email already exist!'
+        })
     } else {
         //creatin random four digit number for emailVerificationOtp
         const emailVerificationOtp = Math.floor(1000 + Math.random() * 9000)
@@ -48,9 +49,10 @@ export const registerUser = async (req, res, next) => {
                 .then((result) => console.log('email sent..', result))
                 .catch((error) => console.log(error.message))
         } else {
-            res.status(404)
-            const err = new Error('invalid data!')
-            next(err)
+            res.status(404).json({
+                status: false,
+                message: 'Invalid Data!'
+            })
         }
     }
 }
@@ -63,7 +65,7 @@ export const registerUser = async (req, res, next) => {
  * @access Public
  *
  */
-export const loginUser = async (req, res, next) => {
+export const loginUser = async (req, res) => {
     const { email, password } = req.body
 
     const checkEmail = await userAccount.findOne({ email: email })
@@ -89,19 +91,22 @@ export const loginUser = async (req, res, next) => {
                     token: generateToken(checkEmail._id)
                 })
             } else {
-                res.status(401)
-                const err = new Error('Invalid password!')
-                next(err)
+                res.status(401).json({
+                    status: false,
+                    message: 'Invalid password!'
+                })
             }
         } else {
-            res.status(401)
-            const err = new Error('Opps seems your account is not activated yet!')
-            next(err)
+            res.status(401).json({
+                status: false,
+                message: 'Opps seems your account is not activate yet!'
+            })
         }
     } else {
-        res.status(404)
-        const err = new Error('No user available with this email!')
-        next(err)
+        res.status(404).json({
+            status: false,
+            message: 'No user available with this email!'
+        })
     }
 }
 
@@ -113,7 +118,7 @@ export const loginUser = async (req, res, next) => {
  * @access Admin
  *
  */
-export const getUser = async (req, res, next) => {
+export const getUser = async (req, res) => {
     try {
         const getUserAccount = await userAccount.find()
         res.status(200).json(getUserAccount)
@@ -130,7 +135,7 @@ export const getUser = async (req, res, next) => {
  * @access Admin
  *
  */
-export const deleteUser = async (req, res, next) => {
+export const deleteUser = async (req, res) => {
     const { id: id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -153,7 +158,7 @@ export const deleteUser = async (req, res, next) => {
  * @access Public
  *
  */
-export const accountActivation = async (req, res, next) => {
+export const accountActivation = async (req, res) => {
     const { id: id } = req.params
     const activeUserAccount = await userAccount.findByIdAndUpdate(
         id,
@@ -163,10 +168,15 @@ export const accountActivation = async (req, res, next) => {
         }
     )
     if (activeUserAccount) {
-        res.json(activeUserAccount)
+        res.json({
+            status: true,
+            message: 'Account activated successfully..',
+            data: activeUserAccount
+        })
     } else {
-        res.status(404)
-        const err = new Error('Something went wrong!')
-        next(err)
+        res.status(404).josn({
+            status: false,
+            message: 'Something went wrong!',
+        })
     }
 }

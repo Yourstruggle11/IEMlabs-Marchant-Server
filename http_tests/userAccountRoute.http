@@ -1,4 +1,4 @@
-POST https://iemlabs-merchant-server.herokuapp.com/useAccount/signup
+POST http://localhost:5000/user-account/signup
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:5000/useAccount/login
+POST http://localhost:5000/user-account/login
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/useAccount
+GET http://localhost:5000/user-account
 Content-Type: application/json
 
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/useAccount/accountActivation/6155c1f68fbc390ba9b75a25
+PUT http://localhost:5000/user-account/account-activation/62a38f84a5c96007741d6e07
 Content-Type: application/json
 
 
