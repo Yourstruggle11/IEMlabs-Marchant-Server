@@ -2,7 +2,7 @@ import userAccount from "../model/userAcSchema.js"
 import bcrypt from "bcrypt";
 import env from "dotenv";
 
-import forgotPasswordController from "../mailer/forgotPasswordMailer.js"
+import forgotPasswordMailer from "../mailer/forgotPasswordMailer.js"
 
 env.config();
 export const sendRecoveryMail = async (req, res, next) => {
@@ -22,7 +22,7 @@ export const sendRecoveryMail = async (req, res, next) => {
         //sending verification email to user
 
 
-        forgotPasswordController(checkEmail.username,checkEmail.email, emailVerificationOtp).then(result => console.log("email sent..", result)).catch(error => console.log(error.message))
+        forgotPasswordMailer(checkEmail.username,checkEmail.email, emailVerificationOtp).then(result => console.log("email sent..", result)).catch(error => console.log(error.message))
     }
     else {
         res.status(404);
@@ -43,3 +43,4 @@ export const updatePassword = async (req, res, next) => {
     })
     res.json(upadatePassword);
 }
+

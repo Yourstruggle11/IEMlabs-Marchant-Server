@@ -52,3 +52,6 @@ env.config();
                 return error
             }
         }
+
+
+        export default sendmail;
