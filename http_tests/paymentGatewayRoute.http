@@ -1,4 +1,4 @@
-POST http://localhost:5000/payment/paymentgetway
+POST http://localhost:5000/payment/paymentgateway
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTU5NzA0Y2IwMGZjZjM3MTAzMTA2M2IiLCJpYXQiOjE2NTQ3MjE3MjcsImV4cCI6MTY1NDcyMTcyOH0.4UDfOG5lJaOru_rIoFuD36AW2ElgmuLBTNzy37Y_wkE
 

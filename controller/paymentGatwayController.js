@@ -6,8 +6,17 @@ env.config();
 
 const stripe = new Stripe(process.env.SECRET_KEY);
 
+
+
+/**
+ *
+ * @description For payment
+ * @route POST /payment/paymentgateway
+ * @params { product, token } from body
+ * @access Public
+ *
+ */
 export const payment = async (req, res) => {
-  // const {product, token} = req.body;
 
   try {
     const { product, token } = req.body;

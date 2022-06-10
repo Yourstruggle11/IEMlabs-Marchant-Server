@@ -4,7 +4,7 @@ import {payment} from "../controller/paymentGatwayController.js"
 
 const route = express.Router();
 
-route.post("/paymentgetway", authMiddleware, payment);
+route.post("/paymentgateway", authMiddleware, payment);
 
 
 

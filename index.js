@@ -10,7 +10,7 @@ import bodyParser from "body-parser";
 import homeRoute from "./routes/homeRoute.js"
 import userAccount from './routes/userAccountRoute.js'
 import forgotPassword from "./routes/forgotPasswordRoute.js"
-import paymentGatway from "./routes/paymentGatwayRoute.js"
+import paymentGateway from "./routes/paymentGatewayRoute.js"
 
 
 
@@ -39,7 +39,7 @@ app.use("/user-account", userAccount)
 app.use("/user/forgot-password", forgotPassword)
 
 //Stripe payment route
-app.use("/payment", paymentGatway)
+app.use("/payment", paymentGateway)
 
 
 

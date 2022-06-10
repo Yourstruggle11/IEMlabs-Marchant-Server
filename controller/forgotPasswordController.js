@@ -5,6 +5,16 @@ import env from "dotenv";
 import forgotPasswordMailer from "../mailer/forgotPasswordMailer.js"
 
 env.config();
+
+
+/**
+ *
+ * @description Send email to user to reset password
+ * @route POST /user/forgot-password/sendmail
+ * @params { email } from body
+ * @access Public
+ *
+ */
 export const sendRecoveryMail = async (req, res, next) => {
     const { email } = req.body;
 
@@ -32,6 +42,15 @@ export const sendRecoveryMail = async (req, res, next) => {
 
 }
 
+
+/**
+ *
+ * @description Update user password
+ * @route POST /user/forgot-password/update-password/:id
+ * @params { id } from body
+ * @access Public
+ *
+ */
 export const updatePassword = async (req, res, next) => {
     const {id} = req.params;
     const {password} = req.body;

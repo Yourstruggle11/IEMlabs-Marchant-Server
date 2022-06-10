@@ -7,9 +7,14 @@ import userAccountConfirmationMailer from "../mailer/userAccountConfirmationMail
 
 env.config();
 
-
-//@route: POST /user/signup
-//@purpose: : post routes for create user account
+/**
+ *
+ * @description Create new user
+ * @route POST /user/signup
+ * @params {username, email, password} from body
+ * @access Public
+ *
+ */
 export const registerUser = async (req, res, next) => {
     const { username, email, password } = req.body;
 
@@ -50,8 +55,14 @@ export const registerUser = async (req, res, next) => {
 
 }
 
-//@route: POST /user/login
-//@purpose: : post routes for help user to login
+/**
+ *
+ * @description Login user
+ * @route POST /user/login
+ * @params { email, password} from body
+ * @access Public
+ *
+ */
 export const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -99,9 +110,14 @@ export const loginUser = async (req, res, next) => {
 
 }
 
-
-//@route: GET /user/
-//@purpose: : get routes for get all user account
+/**
+ *
+ * @description Get all user account from DB
+ * @route GET /user/
+ * @params N/A
+ * @access Admin
+ *
+ */
 export const getUser = async (req, res, next) => {
 
     try {
@@ -113,8 +129,14 @@ export const getUser = async (req, res, next) => {
 }
 
 
-//@route: DELETE /user/
-//@purpose: : delete routes for delete user account
+/**
+ *
+ * @description DELETE a single user
+ * @route DELETE /user/:id
+ * @params { id} from params
+ * @access Admin
+ *
+ */
 export const deleteUser = async (req, res, next) => {
     const { id: id } = req.params;
 
@@ -133,8 +155,14 @@ export const deleteUser = async (req, res, next) => {
 }
 
 
-//@route: PUT /user/accountActivation
-//@purpose: : update routes for activate user account
+/**
+ *
+ * @description Activate user account
+ * @route PUT /user/account-activation/:id
+ * @params { id} from params
+ * @access Public
+ *
+ */
 export const accountActivation = async (req, res, next) => {
     const { id: id } = req.params;
     const activeUserAccount = await userAccount.findByIdAndUpdate(id, { "status": true }, {
