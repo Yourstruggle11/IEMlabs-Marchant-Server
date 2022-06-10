@@ -12,7 +12,7 @@ route.post("/signup", registerUser)
 route.post("/login", loginUser)
 route.get("/", getUser)
 route.delete("/:id", deleteUser)
-route.put("/accountActivation/:id", accountActivation)
+route.put("/account-activation/:id", accountActivation)
 
 
 

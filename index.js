@@ -33,10 +33,10 @@ dbConnection();
 app.use("/", homeRoute);
 
 //userAccount account route
-app.use("/useAccount", userAccount)
+app.use("/user-account", userAccount)
 
 //forgot password route
-app.use("/user/forgotpassword", forgotPassword)
+app.use("/user/forgot-password", forgotPassword)
 
 //Stripe payment route
 app.use("/payment", paymentGatway)

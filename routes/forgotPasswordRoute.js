@@ -4,7 +4,7 @@ import {updatePassword,sendRecoveryMail} from "../controller/forgotPasswordContr
 const route = express.Router();
 
 route.post("/sendmail", sendRecoveryMail);
-route.put("/updatepassword/:id", updatePassword);
+route.put("/update-password/:id", updatePassword);
 
 
 
